@@ -31,4 +31,6 @@ Facts settled by a probe; read before any new spike.
 - 1 `SoundBankCloner` session per bank keeps shared samples shared; `clonePreset` alone copies them per preset.
 - FluidSynth renders a kit at bank N on a melodic channel with a bank select identically to the source kit on the drum channel.
 - SF2 preset names hold 20 bytes; staged presets carry short positional names.
+- 2 builds of the published code from a clean output folder are byte-identical across all 28 fonts and the manifest (sha256), and every one of the 1350 sounds proves bit-exact against its source.
+- The verifier accounts for all 2800 upstream presets (shipped, merged into a shipped or dropped preset, or dropped) and finds no structure, name or file defect.
 - The MuseScore 4 command line renders only its built-in MS Basic font: a score whose track names a missing soundfont and one naming a loaded font export the same RMS; the app itself loads user soundfonts from its SoundFonts folder.
