@@ -11,7 +11,7 @@ The definition of done for soundfonts4u-clean: every requirement, the command th
 | Every preset name unique across all fonts, CamelCase letters only, at most 20 characters, no source, maker or brand word | the pipeline refuses on any violation; a script re-checks the written fonts' own preset names |
 | Font file names are short CamelCase family words | a script asserts every file name matches `^[A-Z][A-Za-z]+\.sf2$` and appears in `adr/naming.md` |
 | Similar sounds sit next to each other | the order is the CLAP clustering leaf order; reviewed by ear in the listening samples |
-| Families are right | `.cache/ambiguities.json` audited, and the CLAP neighbour check flags no unreviewed sound |
+| Families are right | the cache's `ambiguities.json` audited, and the CLAP neighbour check flags no unreviewed sound |
 | The build is deterministic | 2 builds from a clean output folder produce byte-identical fonts and manifest, compared by sha256 |
 | MuseScore loads the fonts | official MuseScore 4 with every font in its SoundFonts folder logs `added sound font` for each of them and no `Failed parse`; playback is proven by the bit-exact FluidSynth render, the engine MuseScore plays SF2 through, because the MuseScore command line ignores user soundfonts: a score set to a missing font and one set to a real font export identical audio |
 
