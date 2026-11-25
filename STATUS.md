@@ -3,11 +3,12 @@
 Owed work for the soundfont rebuild, in order; `DONE.md` holds the definition of done and how each row is proven, and machine paths live in the workspace's operator-local file.
 
 ## Owed work, in order
-1. Reproducibility on the final code. Why: the build must reproduce byte for byte. Check: the cache folder's `twice.sh` prints `identical` after 2 builds from a clean output folder.
-2. Output verifier and neighbour check on that build. Why: the output rows of `DONE.md`. Check: `verify.ts` prints `ok` with every upstream preset accounted; every `neighbour-flags.json` entry reviewed.
-3. Code repo CI green on the pushed head. Check: `gh run list -R 1qh/soundfonts4u-clean --limit 1`.
-4. Dataset README, review set and Hugging Face upload. Why: the deliverable, which the owner approved to publish once checks pass. Check: the remote file list and sha256 match the local build.
-5. Re-verify every number and capability claim in `adr/` and `DONE.md` against the final run. Why: no stale claim ships.
+None. Every row of `DONE.md` holds on code commit `749d27b`; re-run its proofs after any change: the cache folder's `twice.sh` for reproducibility and bit-exact proof, then `verify.ts`, `neighbours.ts` and `readme.ts`, then upload and compare the remote sha256.
+
+## Published
+- Dataset: https://huggingface.co/datasets/1qh/soundfonts4u-clean
+- Code: https://github.com/1qh/soundfonts4u-clean
+- Docs: https://github.com/1qh/soundfonts4u-clean-doc
 
 ## Decided, do not re-ask
 - Font names: see `adr/naming.md`; Piano splits into the tone ladder, Upright and PianoLayer, and Drums into kits and Percussion, see `adr/families.md`.
