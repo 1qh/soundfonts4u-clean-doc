@@ -13,7 +13,7 @@ The definition of done for soundfonts4u-clean: every requirement, the command th
 | Similar sounds sit next to each other | the order is the CLAP clustering leaf order; reviewed by ear in the listening samples |
 | Families are right | `.cache/ambiguities.json` audited, and the CLAP neighbour check flags no unreviewed sound |
 | The build is deterministic | 2 builds from a clean output folder produce byte-identical fonts and manifest, compared by sha256 |
-| MuseScore plays the fonts | official MuseScore 4 loads every font and renders a score that selects 1 preset of each font, with audible output |
+| MuseScore loads the fonts | official MuseScore 4 with every font in its SoundFonts folder logs `added sound font` for each of them and no `Failed parse`; playback is proven by the bit-exact FluidSynth render, the engine MuseScore plays SF2 through, because the MuseScore command line ignores user soundfonts: a score set to a missing font and one set to a real font export identical audio |
 
 ## Code and docs
 | Requirement | Proof |
@@ -31,3 +31,4 @@ Facts settled by a probe; read before any new spike.
 - 1 `SoundBankCloner` session per bank keeps shared samples shared; `clonePreset` alone copies them per preset.
 - FluidSynth renders a kit at bank N on a melodic channel with a bank select identically to the source kit on the drum channel.
 - SF2 preset names hold 20 bytes; staged presets carry short positional names.
+- The MuseScore 4 command line renders only its built-in MS Basic font: a score whose track names a missing soundfont and one naming a loaded font export the same RMS; the app itself loads user soundfonts from its SoundFonts folder.
