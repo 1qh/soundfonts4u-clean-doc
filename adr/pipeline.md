@@ -28,6 +28,7 @@ flowchart LR
 - Write the manifest from the same in-memory decisions the writer used. Why: a second derivation can drift from what was written.
 
 ## NEVER
+- Never keep the pipeline cache inside the code repo at `.cache`. Cost: pm4ai's `clean.sh`, run by `pm4ai fix` and `up.sh`, deletes every `.cache` folder; it wiped 4 GB of renders once. The cache is a folder beside the repo, passed as the third argument.
 - Never continue past a stage whose own check failed. Cost: a later stage builds on an unproven input and every report downstream lies.
 - Never cache a render keyed on anything but the font file's sha256 plus the renderer key: a hash of the FluidSynth version and the probe MIDI for a fixed set of slots, so any change to either renders afresh. Cost: a stale render passes a dedupe it would now fail.
 
