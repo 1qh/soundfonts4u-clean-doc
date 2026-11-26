@@ -1,6 +1,6 @@
 # Families
 
-How each sound gets a family, how a family becomes fonts, and the order inside a font.
+How each sound gets a family, how a family becomes fonts, and the order of sounds and fonts.
 
 ## MUST
 
@@ -25,8 +25,9 @@ How each sound gets a family, how a family becomes fonts, and the order inside a
 - Cut a recording group larger than 128 at the point, in similarity order, where both sides fit and the fewest sample bytes are shared, and log those bytes. Why: such a group cannot fit 1 bank, and the cheapest cut keeps the duplicate smallest.
 
 #### Ordering
-- Order sounds inside a font by the leaf order of an average-linkage hierarchical clustering tree over L2-normalised CLAP embeddings with cosine distance, breaking ties by preset name. Why: neighbours in the picker sound like neighbours, and the tie-break keeps the order deterministic.
-- Order fonts by the similarity of their family centroids and encode it in each font's single bank number. Why: the picker orders sections by bank, then program.
+- Order sounds inside a font alphabetically by final preset name, case-insensitive with the exact name as the tie-break, and number programs in that order. Why: a player finds a sound by name, and alphabetical order is the one a reader predicts.
+- Order fonts alphabetically by file name and encode it in each font's single bank number. Why: the picker orders sections by bank, then program.
+- Keep audio similarity only where it decides MEMBERSHIP: topic splits, the tone ladder, splits along recording groups and the cheapest cut of an oversized group. Why: similarity puts sounds in the right font, and the name orders them.
 - Keep drum kits in the same ordering scheme as any family, at any bank. Why: MuseScore selects by explicit bank and program, and a kit at bank 0 renders bit-identical to bank 128 on any channel.
 
 ## NEVER

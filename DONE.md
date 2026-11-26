@@ -10,7 +10,7 @@ The definition of done for soundfonts4u-clean: every requirement, the command th
 | 1 bank per font, at most 128 presets, within SF2 16-bit indices | the writer refuses an overflow; a script reads every written font and asserts 1 bank, at most 128 presets, every index under 65536 |
 | Every preset name unique across all fonts, CamelCase letters only, at most 20 characters, no source, maker or brand word | the pipeline refuses on any violation; a script re-checks the written fonts' own preset names |
 | Font file names are short CamelCase family words | a script asserts every file name matches `^[A-Z][A-Za-z]+\.sf2$` and appears in `adr/naming.md` |
-| Similar sounds sit next to each other | the order is the CLAP clustering leaf order; reviewed by ear in the listening samples |
+| Presets and fonts are in alphabetical order | a script reads the manifest and asserts every font's programs follow its preset names alphabetically (case-insensitive, exact as tie-break) and banks follow font file names alphabetically |
 | Families are right | the cache's `ambiguities.json` audited, and the CLAP neighbour check flags no unreviewed sound |
 | The build is deterministic | 2 builds from a clean output folder produce byte-identical fonts and manifest, compared by sha256 |
 | MuseScore plays the fonts | official MuseScore 4's own audio export of 1 score per font, 1 part per sound, each part set to its preset with resource type `fluid_soundfont`, renders every one of the 1350 sounds audibly, and each sound's window nulls worse than -20 dB against the same score set to a missing soundfont, so no sound falls back to MuseScore's default; harness `packages/soundfonts4u-clean/src/musescore-proof.ts` in the code repo |
