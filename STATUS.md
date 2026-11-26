@@ -3,7 +3,10 @@
 Owed work for the soundfont rebuild, in order; `DONE.md` holds the definition of done and how each row is proven, and machine paths live in the workspace's operator-local file.
 
 ## Owed work, in order
-None. Every row of `DONE.md` holds on code commit `749d27b`; re-run its proofs after any change: the cache folder's `twice.sh` for reproducibility and bit-exact proof, then `verify.ts`, `neighbours.ts` and `readme.ts`, then upload and compare the remote sha256.
+1. Port the MuseScore playback harness (the cache folder's `harness/msproof.py` and `rescore.py`, Python) into the code repo as TypeScript so it is tracked and runnable. Why: the proof lives outside git and in the wrong language.
+2. Make the pipeline refuse a cache path inside the repo. Why: pm4ai's `clean.sh` deletes any `.cache`; today only a doc rule prevents it.
+
+Every row of `DONE.md` holds on code commit `eb26b96`; re-run its proofs after any change: the cache folder's `twice.sh`, then `verify.ts`, `neighbours.ts`, `readme.ts`, the MuseScore harness, then upload and compare the remote sha256.
 
 ## Published
 - Dataset: https://huggingface.co/datasets/1qh/soundfonts4u-clean
