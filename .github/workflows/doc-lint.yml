@@ -1,0 +1,11 @@
+name: doc-lint
+on: [push, pull_request]
+jobs:
+  doc-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: fetch book lints
+        run: git clone --depth 1 "https://x-access-token:${{ secrets.BOOK_CLONE_TOKEN }}@github.com/1qh/book" /tmp/book || git clone --depth 1 https://github.com/1qh/book /tmp/book
+      - name: present-tense + scrub
+        run: sh /tmp/book/doc-lint.sh .
