@@ -3,10 +3,9 @@
 Owed work for the soundfont rebuild, in order; `DONE.md` holds the definition of done and how each row is proven, and machine paths live in the workspace's operator-local file.
 
 ## Owed work, in order
-1. Lint findings in the TypeScript MuseScore harness and the cache guard. Why: the code repo's gate must print `ok` before the commit. A Codex lane fixes `musescore-proof.ts` and `cli.ts`; then run `bun run fix`, `bun test src`, re-run `musescore-proof.ts fonts <cache>/msproof Harp Choir` (must print `ok`), and commit and push the harness, the guard and `package.json` (fflate).
-2. After that commit, the cache folder's `twice.sh` again (reproducibility on the published head), then `verify.ts`, and a full `musescore-proof.ts` run over all 28 fonts. Why: every `DONE.md` row must hold on the published commit; the fonts on Hugging Face do not change unless a build output differs, and a differing output means re-upload and remote sha256 compare.
+1. On code commit `9d74022`, run the cache folder's `twice.sh` again (reproducibility on the published head), then `verify.ts`, and a full `musescore-proof.ts` run over all 28 fonts. Why: every `DONE.md` row must hold on the published commit; the fonts on Hugging Face do not change unless a build output differs, and a differing output means re-upload and remote sha256 compare.
 
-Every row of `DONE.md` holds on code commit `eb26b96`; re-run its proofs after any change: the cache folder's `twice.sh`, then `verify.ts`, `neighbours.ts`, `readme.ts`, `bun packages/soundfonts4u-clean/src/musescore-proof.ts fonts <work dir>`, then upload and compare the remote sha256.
+Every row of `DONE.md` holds on code commit `eb26b96`; `9d74022` adds the MuseScore harness and the cache guard; re-run its proofs after any change: the cache folder's `twice.sh`, then `verify.ts`, `neighbours.ts`, `readme.ts`, `bun packages/soundfonts4u-clean/src/musescore-proof.ts fonts <work dir>`, then upload and compare the remote sha256.
 
 ## Published
 - Dataset: https://huggingface.co/datasets/1qh/soundfonts4u-clean
