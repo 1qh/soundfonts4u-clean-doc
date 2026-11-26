@@ -3,7 +3,8 @@
 Owed work for the soundfont rebuild, in order; `DONE.md` holds the definition of done and how each row is proven, and machine paths live in the workspace's operator-local file.
 
 ## Owed work, in order
-None.
+1. Lint findings in the TypeScript MuseScore harness and the cache guard. Why: the code repo's gate must print `ok` before the commit. A Codex lane fixes `musescore-proof.ts` and `cli.ts`; then run `bun run fix`, `bun test src`, re-run `musescore-proof.ts fonts <cache>/msproof Harp Choir` (must print `ok`), and commit and push the harness, the guard and `package.json` (fflate).
+2. After that commit, the cache folder's `twice.sh` again (reproducibility on the published head), then `verify.ts`, and a full `musescore-proof.ts` run over all 28 fonts. Why: every `DONE.md` row must hold on the published commit; the fonts on Hugging Face do not change unless a build output differs, and a differing output means re-upload and remote sha256 compare.
 
 Every row of `DONE.md` holds on code commit `eb26b96`; re-run its proofs after any change: the cache folder's `twice.sh`, then `verify.ts`, `neighbours.ts`, `readme.ts`, `bun packages/soundfonts4u-clean/src/musescore-proof.ts fonts <work dir>`, then upload and compare the remote sha256.
 
@@ -29,4 +30,8 @@ Every row of `DONE.md` holds on code commit `eb26b96`; re-run its proofs after a
 - A probe in a scratch folder resolves a bare package import to another copy, so a patch looks absent; run probes from inside the repo.
 - Branch on a gate's own exit status; a gate piped through `tail` let a failing doc lint commit.
 - Check that a large output folder is ignored before any `git add -A`.
-- A tool that cleans a repo owns every folder its globs match; keep caches outside the repo.
+- A tool that cleans a repo owns every folder its globs match; keep caches outside the repo, and the pipeline refuses a cache path inside it.
+- A loudness match is no proof 2 renders are the same sound; compare waveforms by null.
+- A config read by an app is proven by a control that MUST change the output (a missing font, a built-in preset), never by the output looking plausible: MuseScore silently ignored a wrong resource type.
+- Diff every label and font assignment against a snapshot after any keyword rule change; the guitar rule's 1 regression showed only there.
+- A code search that returns nothing during a rate limit proves nothing; clone and grep, with a known instance as the positive control.

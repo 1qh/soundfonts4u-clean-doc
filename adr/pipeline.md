@@ -9,14 +9,17 @@ flowchart LR
     Render --> Embed[render at 48000 Hz, embed with CLAP]
     Embed --> Version[drop presets an older version supersedes]
     Version --> Dedupe[merge same-recording presets at null at most -60 dB]
-    Dedupe --> Family[label families]
+    Dedupe --> Drop[drop owner-dropped sounds]
+    Drop --> Family[label families]
     Family --> Name[name every preset]
-    Name --> Split[split families over 128 along recording groups]
+    Name --> Topic[split families by topic]
+    Topic --> Split[split a font over the SF2 budget along recording groups]
     Split --> Order[order by audio similarity]
-    Order --> Stage[stage each source font's needed presets]
-    Stage --> Write[write 1 font per family from staged fonts]
-    Write --> Prove[prove every output preset against its source render]
-    Prove --> Manifest[emit manifest]
+    Order --> Stage[stage only fonts whose plan changed]
+    Stage --> Write[write those fonts, delete stale ones]
+    Write --> Prove[prove every changed font bit-exact against its source]
+    Prove --> Manifest[emit manifest with resolved merge chains]
+    Manifest --> Checks[verify.ts, neighbours.ts, readme.ts, musescore-proof.ts]
 ```
 
 ## MUST

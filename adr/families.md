@@ -13,7 +13,7 @@ How each sound gets a family, how a family becomes fonts, and the order inside a
 - Fall back to the source file's own name WHEN no keyword, hand entry, drum flag or GM program labels a sound, and stop the build WHEN that is ambiguous too. Why: `Rhodes EPs` and `Chris Mandolin` name their contents.
 - Match the abbreviations the Chateau piano layers use (`Dyn Ch`, `D Ch G`, `Studio Ch`) as piano. Why: those layers otherwise land in Strings and Pad.
 - Stop the build listing every sound no rule labels, for the hand table. Why: a guessed family ships as a real one.
-- Flag a sound for review WHEN its 5 nearest CLAP neighbours mostly carry another family. Why: the audio check catches a keyword that matched the wrong word; owed, see `STATUS.md`.
+- Flag a sound for review WHEN 3 or more of its 5 nearest CLAP neighbours agree on another family (`neighbours.ts`, written to the cache's `neighbour-flags.json`), and review every flag before publishing. Why: the audio check caught the English horn, steel drums, wind chimes, steel-guitar and Chateau layers that keywords had misfiled.
 - Move a sound to the family whose other sounds already hold most of its sample bytes ONLY WHEN its name marks a layer with `+`, `&` or the word layer, and the move saves at least half its audio. Why: a piano layer filed under Strings stores the piano twice, while a name that merely matches 2 families (`Synth Brass 2`, `Sine Perc.`) is a single sound and was dragged into Bass and EGuitar by shared bytes.
 
 #### Splitting into fonts
