@@ -5,7 +5,7 @@ Owed work for the soundfont rebuild, in order; `DONE.md` holds the definition of
 ## Owed work, in order
 None for the soundfonts. Check it, never trust this line: run the proofs below on the published code head and confirm each prints its `ok`.
 
-Every row of `DONE.md` holds on code commit `9d74022`: 2 clean builds identical across 29 files, `verify.ts` ok (28 fonts, 1350 sounds, 2800 upstream presets), the MuseScore harness ok for all 1350 sounds (2 workers over alternating fonts), CI green, and the Hugging Face fonts, manifest and README identical to the local build by sha256. Re-run after any change: the cache folder's `twice.sh`, `verify.ts`, `neighbours.ts`, `readme.ts`, `bun packages/soundfonts4u-clean/src/musescore-proof.ts fonts <work dir> [fonts]`, then upload and compare the remote sha256.
+Every row of `DONE.md` holds on code commit `fe9e71b`: 2 clean builds identical across 29 files, `verify.ts` ok (28 fonts, 1350 sounds, 2800 upstream presets), every font bit-exact against its last MuseScore-proven render (the alphabetical reorder and renames change no sample), CI green, and the Hugging Face fonts, manifest and README identical to the local build by sha256. Re-run after any change: the cache folder's `twice.sh`, `verify.ts`, `neighbours.ts`, `readme.ts`, `bun packages/soundfonts4u-clean/src/musescore-proof.ts fonts <work dir> [fonts]`, then upload and compare the remote sha256.
 
 ## Published
 - Dataset: https://huggingface.co/datasets/1qh/soundfonts4u-clean
