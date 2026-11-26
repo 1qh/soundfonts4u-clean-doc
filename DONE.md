@@ -13,7 +13,7 @@ The definition of done for soundfonts4u-clean: every requirement, the command th
 | Similar sounds sit next to each other | the order is the CLAP clustering leaf order; reviewed by ear in the listening samples |
 | Families are right | the cache's `ambiguities.json` audited, and the CLAP neighbour check flags no unreviewed sound |
 | The build is deterministic | 2 builds from a clean output folder produce byte-identical fonts and manifest, compared by sha256 |
-| MuseScore plays the fonts | official MuseScore 4's own audio export of 1 score per font, 1 part per sound, each part set to its preset with resource type `fluid_soundfont`, renders every one of the 1350 sounds audibly, and each sound's window nulls worse than -20 dB against the same score set to a missing soundfont, so no sound falls back to MuseScore's default; harness in the cache folder's `harness/` |
+| MuseScore plays the fonts | official MuseScore 4's own audio export of 1 score per font, 1 part per sound, each part set to its preset with resource type `fluid_soundfont`, renders every one of the 1350 sounds audibly, and each sound's window nulls worse than -20 dB against the same score set to a missing soundfont, so no sound falls back to MuseScore's default; harness `packages/soundfonts4u-clean/src/musescore-proof.ts` in the code repo |
 
 ## Code and docs
 | Requirement | Proof |
