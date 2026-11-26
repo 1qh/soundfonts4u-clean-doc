@@ -8,7 +8,7 @@ Runtime, gate and every dependency, each with what it is for, why it won, and wh
 |---|---|---|---|
 | Runtime + package manager | Bun, latest | 1.4.5; latest release inside the 6-month window | Only runtime the owner allows |
 | Lint + format gate | lintmax, latest | 0.1.107; latest release inside the window | Owner's max-strict TypeScript gate |
-| Read and write SF2 | spessasynth_core, latest | 4.4.12; latest release inside the window | Round trip renders byte-identical audio; `clonePreset`, `removeUnusedElements`, `getSF2Losses`, `flush(false)`, `writeMIDI` cover the whole build |
+| Read and write SF2 | spessasynth_core, latest | 4.4.12; latest release inside the window | Round trip renders byte-identical audio; `SoundBankCloner`, `removeUnusedElements`, `getSF2Losses`, `flush(false)`, `writeMIDI` cover the whole build |
 | Render audio | FluidSynth binary, invoked | 2.6.3; latest release inside the window | The engine MuseScore builds on, so renders match what plays |
 | Decode WAV | audio-decode, latest | 3.12.0; latest release inside the window | Bun has no WAV decoder |
 | Sound similarity | @huggingface/transformers, latest, model `Xenova/larger_clap_general` | 4.3.2; latest release inside the window | Family leave-one-out 5-NN accuracy 83.4%, against 82.0% `larger_clap_music_and_speech`, 81.9% `clap-htsat-unfused`, 63.5% mel statistics |

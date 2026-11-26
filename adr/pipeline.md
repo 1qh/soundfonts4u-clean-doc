@@ -27,7 +27,7 @@ flowchart LR
 - Render every preset through FluidSynth at 64000 Hz with reverb and chorus off, using the probe MIDI the repo generates. Why: 64000 Hz makes the 64-sample synth block exactly 1 ms, so every event lands on a block edge and segments are position-independent.
 - Silence each segment with all-sound-off on the melodic and drum channels at the start of its final 240-tick pad, and reset controllers before the next program change. Why: a reset at the next segment's start let tails leak across, so one preset nulled at -78 dB against itself and a loud neighbour pushed a proof to -50 dB; with the pad silenced every segment nulls at -999 dB wherever it sits.
 - Stamp every written font's creation-date field with the upstream commit's date. Why: the only byte that otherwise differs between 2 builds of the same font.
-- Prove every output preset by rendering it from the written font and requiring a bit-exact match with its source render. Why: a writer that reports zero losses has not yet been observed to keep the audio; all 1354 sounds measure bit-exact, so any residual at all is a defect.
+- Prove every output preset by rendering it from the written font and requiring a bit-exact match with its source render. Why: a writer that reports zero losses has not yet been observed to keep the audio; all 1350 sounds measure bit-exact, so any residual at all is a defect.
 - Write the manifest from the same in-memory decisions the writer used. Why: a second derivation can drift from what was written.
 
 ## NEVER
