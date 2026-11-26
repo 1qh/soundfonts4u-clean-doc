@@ -25,7 +25,7 @@ The definition of done for soundfonts4u-clean: every requirement, the command th
 | Dataset published | public Hugging Face dataset `1qh/soundfonts4u-clean` holding every font, `manifest.json` and the generated README; the remote file list and sha256 match the local build |
 
 ## Proven
-Facts settled by a probe; read before any new spike.
+Facts settled by a probe; read before any new spike. The probes, lane briefs and reports behind them are kept in the cache folder's `spikes/` and `harness/`; grep there before writing a new probe.
 - 64000 Hz renders make each 64-sample block 1 ms; with the pad silenced every segment nulls at -999 dB in any position (probe: same preset rendered alone, repeated 40 times, and after 39 others).
 - spessasynth 4.4.12 changes attenuation and sends on load and write; the `bun patch` keeps them raw, and a source round trip then nulls at -999 dB.
 - 1 `SoundBankCloner` session per bank keeps shared samples shared; `clonePreset` alone copies them per preset.
