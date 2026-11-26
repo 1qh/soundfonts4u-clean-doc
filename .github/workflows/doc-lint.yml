@@ -4,8 +4,15 @@ jobs:
   doc-lint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
+      - uses: astral-sh/setup-uv@v10
       - name: fetch book lints
-        run: git clone --depth 1 "https://x-access-token:${{ secrets.BOOK_CLONE_TOKEN }}@github.com/1qh/book" /tmp/book || git clone --depth 1 https://github.com/1qh/book /tmp/book
+        env:
+          BOOK_DEPLOY_KEY: ${{ secrets.BOOK_DEPLOY_KEY }}
+        run: |
+          test -n "${BOOK_DEPLOY_KEY}" || { echo 'BOOK_DEPLOY_KEY secret is not set: add a read-only deploy key on 1qh/book and store its private half here' >&2; exit 1; }
+          install -m 600 /dev/null "${RUNNER_TEMP}/book_key"
+          printf '%s\n' "${BOOK_DEPLOY_KEY}" > "${RUNNER_TEMP}/book_key"
+          GIT_SSH_COMMAND="ssh -i ${RUNNER_TEMP}/book_key -o IdentitiesOnly=yes -o StrictHostKeyChecking=accept-new" git clone --depth 1 git@github.com:1qh/book.git /tmp/book
       - name: present-tense + scrub
         run: sh /tmp/book/doc-lint.sh .
