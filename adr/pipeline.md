@@ -14,7 +14,7 @@ flowchart LR
     Family --> Name[name every preset]
     Name --> Topic[split families by topic]
     Topic --> Split[split a font over the SF2 budget along recording groups]
-    Split --> Order[order by audio similarity]
+    Split --> Order[order presets and fonts alphabetically]
     Order --> Stage[stage only fonts whose plan changed]
     Stage --> Write[write those fonts, delete stale ones]
     Write --> Prove[prove every changed font bit-exact against its source]
